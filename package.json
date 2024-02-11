@@ -1,0 +1,56 @@
+{
+  "name": "nuxt-3-template",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@8.14.1",
+  "author": "Anton Reshetov",
+  "engines": {
+    "node": ">=20.10.0"
+  },
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "lint": "vue-tsc --noEmit && eslint .",
+    "lint:fix": "eslint . --fix",
+    "release": "bumpp -c 'build: release v' -t",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "postinstall": "nuxt prepare",
+    "prepare": "simple-git-hooks"
+  },
+  "dependencies": {
+    "@nuxtjs/color-mode": "^3.3.2",
+    "@nuxtjs/tailwindcss": "^6.10.4"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.6.2",
+    "@commitlint/cli": "^18.4.4",
+    "@commitlint/config-conventional": "^18.4.4",
+    "bumpp": "^9.2.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-format": "^0.1.0",
+    "lint-staged": "^15.2.0",
+    "nuxt": "^3.9.0",
+    "prettier": "^3.1.1",
+    "sass": "^1.69.7",
+    "simple-git-hooks": "^2.9.0",
+    "vue": "^3.4.5",
+    "vue-router": "^4.2.5",
+    "vue-tsc": "^1.8.27"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged",
+    "commit-msg": "pnpm commitlint --edit $1"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "volta": {
+    "node": "20.10.0"
+  }
+}
